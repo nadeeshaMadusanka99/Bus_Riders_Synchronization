@@ -9,7 +9,7 @@ public class BusStop {
 
     public synchronized void riderArrives() throws InterruptedException {
         waitingRiderCount++;
-        System.out.println("Rider arrived. Waiting riders: " + waitingRiderCount);
+        System.out.println("BusStop: Rider arrived. Waiting riders: " + waitingRiderCount);
     }
 
     // Rider boarding process
@@ -21,7 +21,7 @@ public class BusStop {
     public void busArrives() throws InterruptedException {
         busMutex.acquire();
         int boarding = Math.min(waitingRiderCount, BUS_CAPACITY);
-        System.out.println("Bus arrived: Boarding " + boarding + " riders");
+        System.out.println("Bus: Boarding " + boarding + " riders");
 
         for (int i = 0; i < boarding; i++) {
             // Release waiting riders one by one
