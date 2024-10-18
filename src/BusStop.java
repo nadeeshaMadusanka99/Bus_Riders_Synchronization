@@ -22,4 +22,8 @@ public class BusStop {
 
         waitingRiderCount -= boarding;
     }
+
+    public void busDeparts() {
+        busMutex.release();
+    }
 }
