@@ -13,6 +13,7 @@ public class Rider implements Runnable {
         try {
             System.out.println("Rider " + id + " arrives at bus stop");
             busStop.riderArrives();
+
             busStop.boardBus();
             System.out.println("Rider " + id + " boards the bus");
         } catch (InterruptedException e) {

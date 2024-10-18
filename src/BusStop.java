@@ -1,7 +1,7 @@
 import java.util.concurrent.Semaphore;
 
 public class BusStop {
-    private static final int BUS_CAPACITY = 10;
+    private static final int BUS_CAPACITY = 50;
     private Semaphore waitingRiders = new Semaphore(0);
     private Semaphore busMutex = new Semaphore(1);
     private Semaphore allAboard = new Semaphore(0);
@@ -24,10 +24,12 @@ public class BusStop {
         System.out.println("Bus arrived: Boarding " + boarding + " riders");
 
         for (int i = 0; i < boarding; i++) {
+            // Release waiting riders one by one
             waitingRiders.release();
         }
 
         for (int i = 0; i < boarding; i++) {
+            // Wait for all riders to board
             allAboard.acquire();
         }
 
