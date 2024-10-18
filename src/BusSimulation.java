@@ -25,8 +25,16 @@ public class BusSimulation {
             Thread.currentThread().interrupt();
         }
 
-        executorService.shutdown();
-        System.out.println("Simulation ended");
+        try {
+            // Wait for all tasks to complete after shutdown request
+            if (!executorService.awaitTermination(1, TimeUnit.MINUTES)) {
+                executorService.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            executorService.shutdownNow();
+        }
+
+        System.out.println("All tasks completed, Simulation ended");
 
     }
 
