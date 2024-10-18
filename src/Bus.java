@@ -13,8 +13,8 @@ public class Bus implements Runnable {
             System.out.println("Bus is arriving");
             busStop.busArrives();
 
-            // custom boarding time
-            TimeUnit.MILLISECONDS.sleep(500);
+            // Wait for 2 seconds to simulate bus boarding
+            TimeUnit.SECONDS.sleep(2);
 
             busStop.busDeparts();
             System.out.println("Bus is departing");
