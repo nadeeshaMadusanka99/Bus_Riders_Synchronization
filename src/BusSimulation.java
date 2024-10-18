@@ -18,6 +18,16 @@ public class BusSimulation {
         // Schedule rider arrivals with exponential distribution
         scheduleRiderArrivals(executorService, busStop, random);
 
+        // Run simulation for a specific duration
+        try {
+            TimeUnit.MINUTES.sleep(2);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        executorService.shutdown();
+        System.out.println("Simulation ended");
+
     }
 
     private static void scheduleBusArrivals(ScheduledExecutorService executorService, BusStop busStop, Random random) {
