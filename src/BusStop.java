@@ -12,6 +12,12 @@ public class BusStop {
         System.out.println("Rider arrived. Waiting riders: " + waitingRiderCount);
     }
 
+    public void boardBus() throws InterruptedException {
+        waitingRiders.acquire();
+        // Boarding process
+        allAboard.release();
+    }
+
     public void busArrives() throws InterruptedException {
         busMutex.acquire();
         int boarding = Math.min(waitingRiderCount, BUS_CAPACITY);
