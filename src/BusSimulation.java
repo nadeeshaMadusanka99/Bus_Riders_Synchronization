@@ -1,10 +1,15 @@
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.Random;
+
 public class BusSimulation {
+    private static final double BUS_MEAN_ARRIVAL_TIME = 0.5; // 20 minutes
+    private static final double RIDER_MEAN_ARRIVAL_TIME = 0.05; // 30 seconds
+
     public static void main(String[] args) {
-        // Create a new Bus object
-        Bus bus = new Bus();
-        // Create a new Rider object
-        Rider rider = new Rider();
-        // Create a new BusStop object
         BusStop busStop = new BusStop();
+        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(100);
+        Random random = new Random();
+
     }
 }
