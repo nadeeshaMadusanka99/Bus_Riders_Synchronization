@@ -12,8 +12,10 @@ public class Bus implements Runnable {
         try {
             System.out.println("Bus is arriving");
             busStop.busArrives();
+
             // custom boarding time
             TimeUnit.MILLISECONDS.sleep(500);
+
             busStop.busDeparts();
             System.out.println("Bus is departing");
         } catch (InterruptedException e) {

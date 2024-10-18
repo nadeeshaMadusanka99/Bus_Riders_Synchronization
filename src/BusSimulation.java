@@ -15,6 +15,9 @@ public class BusSimulation {
         // Schedule bus arrivals with exponential distribution
         scheduleBusArrivals(executorService, busStop, random);
 
+        // Schedule rider arrivals with exponential distribution
+        scheduleRiderArrivals(executorService, busStop, random);
+
     }
 
     private static void scheduleBusArrivals(ScheduledExecutorService executorService, BusStop busStop, Random random) {
@@ -27,6 +30,19 @@ public class BusSimulation {
             }
         };
         executorService.submit(busScheduler);
+    }
+
+    private static void scheduleRiderArrivals(ScheduledExecutorService executorService, BusStop busStop,
+            Random random) {
+        Runnable riderScheduler = new Runnable() {
+            @Override
+            public void run() {
+                executorService.execute(new Rider(busStop));
+                long delay = (long) (Math.log(1 - random.nextDouble()) / (-1.0 / RIDER_MEAN_ARRIVAL_TIME) * 60 * 1000);
+                executorService.schedule(this, delay, TimeUnit.MILLISECONDS);
+            }
+        };
+        executorService.submit(riderScheduler);
     }
 
 }
