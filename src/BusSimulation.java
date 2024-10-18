@@ -20,10 +20,12 @@ public class BusSimulation {
 
         // Run simulation for a specific duration
         try {
-            TimeUnit.MINUTES.sleep(2);
+            TimeUnit.HOURS.sleep(1); // Run simulation for 1 hour
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+        // Shutdown executor service
+        executorService.shutdown();
 
         try {
             // Wait for all tasks to complete after shutdown request
