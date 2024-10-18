@@ -11,11 +11,11 @@ public class Rider implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println("Rider " + id + " arrives at bus stop");
+            System.out.println("Rider: Rider " + id + " arrives at bus stop");
             busStop.riderArrives();
 
             busStop.boardBus();
-            System.out.println("Rider " + id + " boards the bus");
+            System.out.println("Rider: Rider " + id + " boards the bus");
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
